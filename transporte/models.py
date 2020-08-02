@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from datetime import datetime
+from django.contrib.auth.models import User
 
 from django.db import models
 
@@ -11,6 +12,15 @@ class Medical_condition(models.Model):
     def __unicode__(self):              # __unicode__ on Python 2
         return self.condition
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    adress = models.CharField(max_length=50)
+    id_number_gov = models.CharField(max_length=50)
+    email = models.EmailField(max_length=256)
+
+    def __unicode__(self):              # __unicode__ on Python 2
+        return self.id_number_gov
+
 
 
 
@@ -18,9 +28,7 @@ class Medical_condition(models.Model):
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    facility = models.CharField(max_length=100)
     room = models.CharField(max_length=100)
-
     destiny = models.CharField(max_length=100)
     pick_up_facility = models.CharField(max_length=100)
     reciving_facility =  models.CharField(max_length=100)

@@ -6,8 +6,12 @@ from django.contrib import admin
 # Register your models here.
 
 
-from .models import Customer, Service, Order
+from .models import Customer, Service, Order, Profile
 from .models import Medical_condition
+
+class ProfileAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Profile, ProfileAdmin)
 
 class CustomerAdmin(admin.ModelAdmin):
     pass
