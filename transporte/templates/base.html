@@ -84,10 +84,8 @@
     </div>
     <ul class="nav navbar-nav">
       {% if user.is_authenticated %}
-      <li class="active"><a href="/">Dashboard</a></li>
-      <li><a href="/customers/list/">Customers</a></li>
-      <li><a href="/services/list/">Services</a></li>
-      <li><a href="/invoices/list/">Invoices</a></li>
+      <li class="active"><a href="/dashboard/">Dashboard</a></li>
+
       {% else %}
 
       {% endif %}

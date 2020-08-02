@@ -81,7 +81,7 @@ class CustomerDetailView(DetailView):
 
 class CustomerCreateView(CreateView):
     model = Customer
-    fields = ['first_name','last_name', 'facility', 'room', 'destiny', 'pick_up_facility',
+    fields = ['first_name','last_name',  'room',  'pick_up_facility',
     'reciving_facility','reason_for_transfer','passenger_information','requested_date_of_transportation',
     'name_and_contact_informtion','proof_of_service','medical_condition','does_patient_requiere_special_equipment','physical_condition']
     success_url = "/admin"
