@@ -1,0 +1,56 @@
+{%extends "base.html" %}{% block content %}
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="/media/logo03.jpeg" style="width:50px">
+      </a>
+
+
+
+
+    </div>
+  </div>
+</nav>
+<div class="container">
+<h1>Services</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Service Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Cost per Hour</th>
+      <thscope="col">Cost per Mile</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for service in object_list %}
+        <tr>
+      <th scope="row">{{service.pk}}</th>
+      <td>{{ service.service_name }}</td>
+      <td>{{ service.service_description }}</td>
+      <td>{{ service.cost_per_hour }}</td>
+      <td>{{ service.cost_per_mile }}</td>
+      <td><a href="/service/edit/{{ service.id }}/" class="btn btn-primary">View</a></td>
+
+    </tr>
+
+{% empty %}
+    <th scope="row">1</th>
+    <td>No Cusromer yet.</td>
+{% endfor %}
+
+{% endblock  %}
+
+
+
+  </tbody>
+</table>
+
+</div>
+

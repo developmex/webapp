@@ -1,0 +1,90 @@
+{%extends "base.html" %}{% block content %}
+
+
+
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <nav id="sideNav" class="col-lg-3">
+
+
+             <div class="row superior-side">
+               <div class="col-lg-4"><img class="float-rigth" src="/media/logo03.jpeg"  style="width:50px"></div>
+               <div class="col-lg-8"><h4>Wellcome {{request.user.username}}</h4></div>
+
+              </div>
+              <div class="row sidebar-container">
+
+
+      {% if user.is_authenticated %}
+      <div class="menu">
+
+
+
+
+      <ul >
+      <li class="active"><a href="/">Invoices</a></li>
+      <li><a href="/customers/list/">Customers</a></li>
+      <li><a href="/services/list/">Services</a></li>
+      <li><a href="/invoices/list/">Invoices</a></li>
+      </ul>
+
+      </div>
+      {% else %}
+
+      {% endif %}
+
+
+
+              </div>
+
+
+
+
+
+        </nav>
+
+
+        <div id="mainContent" class="col-lg-9">
+           <h1>Customers</h1>
+           <table class="table">
+             <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Destiny</th>
+    </tr>
+  </thead>
+             <tbody>
+
+    {% for customer in object_list %}
+        <tr>
+      <th scope="row">{{customer.pk}}</th>
+      <td>{{ customer.first_name }}</td>
+      <td>{{ customer.last_name }}</td>
+      <td>{{ customer.destiny }}</td>
+      <td><a href="/customers/view/{{ customer.id }}/" class="btn btn-primary">View</a></td>
+
+    </tr>
+
+{% empty %}
+    <th scope="row">1</th>
+    <td>No Cusromer yet.</td>
+{% endfor %}
+
+
+
+{% endblock  %}
+
+
+
+  </tbody>
+           </table>
+        </div>
+    </div>
+</div>
+
