@@ -48,7 +48,8 @@ class Invoice(models.Model):
     description = models.CharField(max_length=50)
     hours= models.CharField(max_length=100)
     rate= models.CharField(max_length=100)
-    customer = models.ForeignKey(Passenger, on_delete=models.CASCADE)
+    miles = models.CharField(max_length=6)
+    passenger = models.ForeignKey(Passenger, on_delete=models.CASCADE)
     
 
     def __unicode__(self):
