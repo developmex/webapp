@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 from transporte.views import IndexView, login, logout, CustomerListView, dashboard, GeneratePdf, CustomerCreateView, CustomerDetailView, ServiceListView, InvoiceListView
-from passenger.views import  PassengerUpdate, PassengerListView, PassengerCreateView, PassengerDetailView
+from passenger.views import  PassengerUpdate, PassengerListView, InvoiceCreateView, PassengerCreateView, PassengerDetailView
 
 admin.site.site_header = 'Valley Administrator'
 admin.site.site_title = 'Valley Medical Transport'
@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^passenger/edit/(?P<pk>[0-9]+)/$', PassengerUpdate.as_view(), name='passenger-edit'),
     url(r'passenger/add/$', PassengerCreateView.as_view(), name='passenger_add'),
     url(r'customer/add/$', CustomerCreateView.as_view(), name='customer_add'),
+    url(r'invoices/add/$', InvoiceCreateView.as_view(), name='invoice_add'),
     url(r'^$', IndexView.as_view(), {'redirect_if_logged_in': '/dashboard/'}, name='home'),
     url(r'^login/$', login, name='login'),
     url(r'^dashboard/$', dashboard, name='dashboard'),

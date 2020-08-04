@@ -1,0 +1,26 @@
+{%extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="/media/logo03.jpeg" style="width:50px">
+      </a>
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+<h1>Create New Invoice</h1>
+<form method="post">{% csrf_token %}
+<div class="form-group">
+    {{ form|crispy }}
+    <input type="submit" value="Save">
+</form></div></div>
+{% endblock  %}

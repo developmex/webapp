@@ -43,3 +43,14 @@ class Passenger(models.Model):
     def __unicode__(self):
 
         return "%s %s" % (self.first_name, self.last_name)
+
+class Invoice(models.Model):
+    description = models.CharField(max_length=50)
+    hours= models.CharField(max_length=100)
+    rate= models.CharField(max_length=100)
+    customer = models.ForeignKey(Passenger, on_delete=models.CASCADE)
+    
+
+    def __unicode__(self):
+
+        return self.description
