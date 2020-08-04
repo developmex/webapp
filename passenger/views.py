@@ -35,7 +35,9 @@ class PassengerCreateView(CreateView):
 
 class PassengerUpdate(UpdateView):
     model = Passenger
-    fields = ['number_id', 'date','time', 'service','passenger','hours','miles']
+      fields = ['first_name','last_name',  'room',  
+    'reciving_facility','reason_for_transfer','passenger_information','pick_up_date', 'pick_up_time', 'appointment_time',
+    'name_and_contact_informtion','proof_of_service','medical_condition','does_patient_requiere_special_equipment','physical_condition']
     success_url = "/dashboard/"
     template_name_suffix = '_update_form'
 
@@ -44,7 +46,5 @@ class PassengerUpdate(UpdateView):
 class InvoiceCreateView(CreateView):
 
     model = Passenger
-    fields = ['first_name','last_name',  'room',  
-    'reciving_facility','reason_for_transfer','passenger_information','pick_up_date', 'pick_up_time', 'appointment_time',
-    'name_and_contact_informtion','proof_of_service','medical_condition','does_patient_requiere_special_equipment','physical_condition']
     success_url = "/dashboard/"
+    fields = ['number_id', 'date','time', 'service','passenger','hours','miles']
