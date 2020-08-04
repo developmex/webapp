@@ -25,7 +25,7 @@ SECRET_KEY = 'ycq*9eydmhtf*5m6dfx^h3r%es^k(*uaje3da7$m9^dil7eo4p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['juanman982.pythonanywhere.com']
+ALLOWED_HOSTS = ['juanman982.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'transporte',
-    'patient',
+    'passenger',
+    'crispy_forms',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'webapp.wsgi.application'
 
@@ -126,7 +130,21 @@ STATIC_URL = '/static/'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = '/home/juanman982/webapp/media'
-MEDIA_URL = '/media/'
+
+
+
+#MEDIA_ROOT = '/home/juanman/webapp/media'
+#STATIC_ROOT = '/home/juanman/webapp/static'
+
+#MEDIA_URL = '/media/'
+
+#STATIC_URL = '/static/'
+
+
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

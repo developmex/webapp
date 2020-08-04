@@ -1,0 +1,40 @@
+{%extends "base.html" %}{% block content %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="/media/logo03.jpeg" style="width:50px">
+      </a>
+<h1 class="navbar-text navbar-right"> <a href="http://juanman982.pythonanywhere.com/admin/" class="navbar-link">Login</a></h1>
+
+
+
+
+    </div>
+
+  </div
+
+
+
+</nav>
+
+<a href="/passenger/edit/{{object.id}}" class="btn btn-primary">Update Information</a>
+<div class="container">
+<h1>{{object.first_name}} {{object.last_name}}</h1>
+
+    <p>{{object.facility}}</p>
+    <p>{{object.room}}</p
+    <p>{{object.destiny}}</p>
+    <p>{{object.pick_up_facility}}</p>
+    <p>{{object.reciving_facility}}</p>
+    <p>{{object.reason_for_transfer}}</p>
+    <p>{{object.passenger_information}}</p>
+    <p>{{object.requested_date_of_transportation}}</p>
+    <p>{{object.name_and_contact_informtion}}</p>
+    <p>{{object.proof_of_service}}</p>
+    <p>{{object.medical_condition}}</p>
+    <p>{{object.does_patient_requiere_special_equipment}}</p>
+    <p>{{object.physical_condition}}</p>
+
+</div>
+{% endblock  %}

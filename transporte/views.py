@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.utils import timezone
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
 from django.urls import reverse
 
@@ -14,7 +15,6 @@ from django.views.generic import TemplateView
 
 from django.http import HttpResponse
 from django.views.generic import View
-from django.views.generic.edit import CreateView
 from django.contrib import auth
 from django.contrib.auth.models import User
 
@@ -81,8 +81,8 @@ class CustomerDetailView(DetailView):
 
 class CustomerCreateView(CreateView):
     model = Customer
-    fields = ['first_name','last_name',  'room',  'pick_up_facility',
-    'reciving_facility','reason_for_transfer','passenger_information','requested_date_of_transportation',
+    fields = ['first_name','last_name',  'room',  
+    'reciving_facility','reason_for_transfer','passenger_information','pick_up_date', 'pick_up_time', 'appointment_time',
     'name_and_contact_informtion','proof_of_service','medical_condition','does_patient_requiere_special_equipment','physical_condition']
     success_url = "/admin"
 

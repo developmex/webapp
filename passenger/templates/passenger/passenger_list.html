@@ -1,0 +1,56 @@
+{%extends "base.html" %}{% block content %}
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="/media/logo03.jpeg" style="width:50px">
+      </a>
+
+
+
+
+    </div>
+  </div>
+</nav>
+<div class="container">
+<h1>Passengers</h1>
+<a href="/passenger/add/" class="btn btn-primary">Create New Passenger</a>
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Destiny</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for passenger in object_list %}
+        <tr>
+      <th scope="row">{{passenger.pk}}</th>
+      <td>{{ passenger.first_name }}</td>
+      <td>{{ passenger.last_name }}</td>
+
+      <td><a href="/passengers/view/{{ passenger.id }}/" class="btn btn-primary">View</a></td>
+
+    </tr>
+
+{% empty %}
+    <th scope="row">1</th>
+    <td>No Cusromer yet.</td>
+{% endfor %}
+
+
+
+
+
+  </tbody>
+</table>
+
+</div>
+
+{% endblock  %}
