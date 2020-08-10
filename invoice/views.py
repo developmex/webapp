@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.utils import timezone
+import pytz
 
 from django.shortcuts import render, redirect 
 from invoice.models import Invoice
@@ -38,6 +40,7 @@ def invoice_create(request):
         print(passenger_data_model.pick_up_date)
         pick_up_date = passenger_data_model.pick_up_date
         pick_up_time =passenger_data_model.pick_up_time
+        tzinfo=pytz.UTC
 
         def get_datetime():
             return '%s %s' % (pick_up_date, pick_up_time)

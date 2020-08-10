@@ -69,9 +69,10 @@ class GeneratePdf(View):
 def index(request):
     if request.user.is_authenticated():
         return redirect("/dashboard")
+    
 
     
-    return render(request, 'transporte/index.html')
+    return render(request, 'index.html')
 
 
 
