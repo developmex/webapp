@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'transporte',
     'passenger',
     'crispy_forms',
+    'events',
 ]
 
 

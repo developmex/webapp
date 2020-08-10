@@ -20,7 +20,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from transporte.views import IndexView, login, logout, CustomerListView, dashboard, GeneratePdf, CustomerCreateView, CustomerDetailView, ServiceListView, InvoiceListView
 from passenger.views import  PassengerUpdate, PassengerListView, InvoiceCreateView, PassengerCreateView, PassengerDetailView
-
+from events.views import event
 admin.site.site_header = 'Valley Administrator'
 admin.site.site_title = 'Valley Medical Transport'
 
@@ -43,4 +43,7 @@ urlpatterns = [
     url(r'^customers/list/', CustomerListView.as_view(), name='customerlistview'),
     url(r'^services/list/', ServiceListView.as_view(), name='servicelistview'),
     url(r'^invoices/list/', InvoiceListView.as_view(), name='invoicelistview'),
+
+    url(r'^calendar/', event, name='calendar'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
