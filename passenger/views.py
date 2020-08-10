@@ -8,8 +8,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
 # Create your views here.
-from passenger.models import Passenger, Invoice
-
+from passenger.models import Passenger
 class PassengerListView(ListView):
 
     model = Passenger
@@ -38,10 +37,3 @@ class PassengerUpdate(UpdateView):
     success_url = "/dashboard/"
     template_name_suffix = '_update_form'
 
-
-
-class InvoiceCreateView(CreateView):
-
-    model = Invoice
-    success_url = "/dashboard/"
-    fields = ['description', 'hours','rate', 'miles', 'passenger', ]

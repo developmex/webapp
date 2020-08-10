@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'passenger',
     'crispy_forms',
     'events',
+    'invoice',
 ]
 
 

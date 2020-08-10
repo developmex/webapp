@@ -65,8 +65,16 @@ class GeneratePdf(View):
         pdf = render_to_pdf('transporte/pdf_old.html', data)
         return HttpResponse(pdf, content_type='application/pdf')
 
-class IndexView(TemplateView):
-    template_name = "index.html"
+
+def index(request):
+    if request.user.is_authenticated():
+        return redirect("/dashboard")
+
+    
+    return render(request, 'transporte/index.html')
+
+
+
 
 class CustomerListView(ListView):
 

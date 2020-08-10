@@ -8,35 +8,32 @@
 <div class="container-fluid">
 
     <div class="row">
-        <nav id="sideNav" class="col-lg-3">
+        <nav id="sideNav" class="col-lg-3 ">
 
 
              <div class="row superior-side">
                <div class="col-lg-4"><img class="float-rigth" src="/media/logo03.jpeg"  style="width:50px"></div>
-               <div class="col-lg-8"><h4>Wellcome {{request.user.profile}}</h4></div>
+               <div class="col-8"><h4>Wellcome, {{request.user}}</h4></div>
 
               </div>
               <div class="row sidebar-container">
 
-
-      {% if user.is_authenticated %}
-      <div class="menu-lateral">
-
-
+                
+      
+                  <div class="menu-lateral">
 
 
-      <ul >
-      <h4><a href="/passengers/list/">Passengers</a></h4>
-      <h4><a href="/services/list/">Services</a></h4>
-      <h4><a href="/invoices/list/">Invoices</a></h4>
-      </ul>
-
-      </div>
-      {% else %}
-
-      {% endif %}
 
 
+                      <ul >
+                      <h4><a href="/profile/view/">My Account</a></h4>                      
+                      </ul>
+
+                  
+                    
+
+                  
+                  </div>
 
               </div>
 
@@ -49,38 +46,58 @@
 
         <div id="mainContent" class="col-lg-9">
            <div class="row" style="margin-top: 100px;">
-
-
-            
-            
-
-
-  <div class="col-sm-6" style="text-align: center;">
-    <div class="card" ><img src="/media/passenger.jpg" class="rounded float-left" alt="passengers">
-      <div class="card-body" style="text-align: center;">
-        <h1 class="card-title">Passengers</h1>
+              <div class="col-sm-6" style="text-align: center;">
+              <div class="card" ><img src="/media/icons/appointment.svg"  height="300px" class="rounded float-left" alt="passengers">
+                <div class="card-body" style="text-align: center;">
+                  <h1 class="card-title">Appointments</h1>
 
 
 
-        <a href="/passengers/list/" class="btn btn-primary">List</a>
-        <a href="/passenger/add/" class="btn btn-primary">New</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6" style="text-align: center;">
-    <div class="card">
-      <img src="/media/invoice.jpg" class="rounded float-right" alt="invoice">
-      <div class="card-body">
-        <h1 class="card-title">Invoices</h1>
+                  <a href="/passengers/list/" class="btn btn-primary">List</a>
+                  <a href="/passenger/add/" class="btn btn-primary">New</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-sm-6" style="text-align: center;">
+                <div class="card" ><img src="/media/icons/passenger.svg"  height="300px" class="rounded float-left" alt="passengers">
+                  <div class="card-body" style="text-align: center;">
+                    <h1 class="card-title">Passengers</h1>
 
 
 
-        <a href="/invoices/list/" class="btn btn-primary">List</a>
-        <a href="/invoices/add/" class="btn btn-primary">New</a>
+                    <a href="/passengers/list/" class="btn btn-primary">List</a>
+                    <a href="/passenger/add/" class="btn btn-primary">New</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6" style="text-align: center;">
+                <div class="card">
+                  <img src="/media/icons/invoice.svg" height="300px" class="rounded float-right" alt="invoice">
+                  <div class="card-body">
+                    <h1 class="card-title">Invoices</h1>
 
-      </div>
-    </div>
-  </div>
+
+
+                    <a href="/invoices/list/" class="btn btn-primary">List</a>
+                    <a href="/invoices/add/" class="btn btn-primary">New</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6" style="text-align: center;">
+                <div class="card">
+                  <img src="/media/icons/calendar.svg" height="300px" class="rounded float-right" alt="invoice">
+                  <div class="card-body">
+                    <h1 class="card-title">Calendar</h1>
+
+
+
+                    <a href="/calendar/" class="btn btn-primary">View</a>
+                    
+
+                  </div>
+                </div>
+              </div>
  
 </div>
 

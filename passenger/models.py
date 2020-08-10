@@ -5,7 +5,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 from transporte.models import Medical_condition
-
+from events.models import Events
 
 
 
@@ -35,23 +35,11 @@ class Passenger(models.Model):
     does_patient_requiere_special_equipment = models.CharField(max_length=100, )
     physical_condition = models.CharField(max_length=100, )
 
-
-
+    
 
 
     # __unicode__ on Python 2
     def __unicode__(self):
-
-        return "%s %s" % (self.first_name, self.last_name)
-
-class Invoice(models.Model):
-    description = models.CharField(max_length=50)
-    hours= models.CharField(max_length=100)
-    rate= models.CharField(max_length=100)
-    miles = models.CharField(max_length=6)
-    passenger = models.ForeignKey(Passenger, on_delete=models.CASCADE)
-    
-
-    def __unicode__(self):
-
-        return self.description
+        
+        return str(self.pk)
+        
