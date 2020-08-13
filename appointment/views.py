@@ -21,6 +21,11 @@ class AppointmentDetailView(DetailView):
     success_url = "/dashboard/"
 
 
+class AppointmentUpdate(UpdateView):
+    model = Appointments
+    fields = '__all__'
+    success_url = "/dashboard/"
+    template_name_suffix = '_update_form'
 
 class AppointmentCreateView(CreateView):
 
