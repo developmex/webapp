@@ -1,0 +1,17 @@
+{%extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+
+
+
+  <div class="row">
+    <div class="col-lg-4">
+  <h1>{{object.appointment_id}} {{object.appointment_name}}</h1><a href="/appointment/edit/{{object.pk}}" class="btn btn-primary">Update Information</a>
+  
+  </div>
+    
+  </div>
+  </div>
+</form></div></div>
+{% endblock  %}

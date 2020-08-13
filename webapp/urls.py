@@ -21,7 +21,10 @@ from django.contrib import admin
 from transporte.views import index, login, logout, CustomerListView, dashboard, GeneratePdf, CustomerCreateView, CustomerDetailView, ServiceListView, InvoiceListView
 from passenger.views import  PassengerUpdate, PassengerListView,  PassengerCreateView, PassengerDetailView
 from events.views import event
+from appointment.views import AppointmentListView, AppointmentDetailView
+from appointment.views import appointment
 from invoice.views import InvoiceCreateView, invoice_create
+from appointment.views import AppointmentCreateView
 admin.site.site_header = 'Valley Administrator'
 admin.site.site_title = 'Valley Medical Transport'
 
@@ -45,6 +48,10 @@ urlpatterns = [
     url(r'^services/list/', ServiceListView.as_view(), name='servicelistview'),
     url(r'^invoices/list/', InvoiceListView.as_view(), name='invoicelistview'),
 
-    url(r'^calendar/', event, name='calendar'),
+    url(r'^calendar/', appointment, name='calendar'),
+
+    url(r'^appointments/list/', AppointmentListView.as_view(), name='appointments_listview'),
+    url(r'^appointments/detail/(?P<pk>[0-9]+)/$', AppointmentDetailView.as_view(), name='appointment-detail'),
+    url(r'^appointments/add/', AppointmentCreateView.as_view(), name='appointment_add'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

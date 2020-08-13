@@ -10,10 +10,13 @@ class Events(models.Model):
     start_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
     event_type = models.CharField(max_length=10, null=True, blank=True)
+    invoice = models.CharField(max_length=10, null=True, blank=True)
+    passenger = models.CharField(max_length=10, null=True, blank=True)
+
     
     @property
     def event_prom(self):
-        return '%s %s' % (self.event_id, self.event_name)
+        return '%s %s' % (self.event_id, self.invoice)
 
 
     def __str__(self):
