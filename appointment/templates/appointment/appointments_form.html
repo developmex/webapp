@@ -3,11 +3,11 @@
 {% block content %}
 
 
-<div class="container">{% csrf_token %}
+<div class="container">
     <div class="row">
        <div class="col-lg-8">
            <div style="text-align: center;"><h1>Create new Appointments</h1></div>
-           <form method="post">
+           <form method="post">{% csrf_token %}
                 {{ form|crispy }}
                 <input type="submit" value="Save">
         </form>

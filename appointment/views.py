@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.http import HttpResponse, HttpResponseRedirect
 
 from django.shortcuts import render
 from appointment.models import Appointments
@@ -12,6 +13,7 @@ from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from .forms import AppointmentForm
 
 
 class AppointmentDetailView(DetailView):
@@ -86,3 +88,25 @@ def appointment(request):
 
     }
     return render(request, 'appointment/calendar.html', context)
+
+
+
+    from .forms import AppointmentForm
+
+def appointment_form(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = AppointmentForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/dashboard/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = AppointmentForm()
+
+    return render(request, 'appointment/appointments_form.html', {'form': form})
