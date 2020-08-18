@@ -1,9 +1,7 @@
-
+{% extends "base.html" %}
 {% load static %}
-{% block content %}
-    <!DOCTYPE html>
-    <html>
-    <head>
+{% block content %}{% load crispy_forms_tags %}
+ 
         <link href='{% static 'fullcalendar/packages/core/main.css' %}' rel='stylesheet'/>
         <link href='{% static 'fullcalendar/packages/daygrid/main.css' %}' rel='stylesheet'/>
         <link href='{% static 'fullcalendar/packages/timegrid/main.css' %}' rel='stylesheet'/>
@@ -26,7 +24,8 @@
                     defaultDate: Date.now(),
                     navLinks: true, // can click day/week names to navigate views
                     editable: false,
-                    eventLimit: true, // allow "more" link when too many events
+                    eventLimit: true,
+                    themeSystem: 'bootstrap', // allow "more" link when too many events
                     events: [
           {% for i in appointments %}
              {
@@ -44,12 +43,7 @@
         </script>
         <style>
 
-            body {
-                margin: 40px 10px;
-                padding: 0;
-                font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-                font-size: 14px;
-            }
+          
 
             #calendar {
                 max-width: 900px;
@@ -57,15 +51,36 @@
             }
 
         </style>
-    </head>
-    <body>
+    
+    
 
-    <div id='calendar'></div>
+        <div class="container" style="padding: 10px;">
+            <div class="row">
+               <div class="col-lg-6">
+
+                   <div style="text-align: center;"><h1>Create new Appointments</h1></div>
+                   <form method="post">{% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="submit" value="Save">
+                </form>
+        
+                </div>
+                <div class="col-lg-6">
+                    <div id='calendar'></div>
+                </div>
+                
+            </div>
+            <div class="row">
+                
+            </div>
+        
+        </div>
+    
 
     <script src='{% static 'fullcalendar/packages/core/main.js' %}'></script>
     <script src='{% static 'fullcalendar/packages/interaction/main.js' %}'></script>
     <script src='{% static 'fullcalendar/packages/daygrid/main.js' %}'></script>
     <script src='{% static 'fullcalendar/packages/timegrid/main.js' %}'></script>
     <script src="{% static 'fullcalendar/packages/core/locales/sr.js' %}"></script>
-    </body>
+    
 {% endblock %}

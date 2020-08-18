@@ -3,12 +3,6 @@ from __future__ import unicode_literals
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages 
 from django.shortcuts import render
-from datetime import datetime
-from django.utils.timezone import datetime
-from django.http import JsonResponse
-import json
-
-
 from appointment.models import Appointments
 # Create your views here.
 
@@ -89,7 +83,7 @@ def appointment(request):
             print("la salida de consola dce:",start_date)
             appointment_arr.append(appointment_sub_arr)
             
-        return HttpResponse(json.dumps(appointment_arr, default=json_util.default))
+        return HttpResponse(json.dumps(appointment_arr))
 
     context = {
         "appoinments": all_appointments,
@@ -114,28 +108,28 @@ class AppointmentView(View):
         get_appointment_type = Appointments.objects.only('appointment_type')
         form = AppointmentForm()
         print("antes de if / get")
-        
-        """for i in all_appointments:
-                appointment_arr = []
-                appointment_sub_arr = {}
-                appointment_sub_arr['title'] = i.appointment_name
-                
-                
-                start_date = datetime.strptime(str(i.pick_up_date), "%Y-%m-%d").strftime("%Y-%m-%dT%H:%M:%S")
-                end_date   = datetime.strptime(str(i.end_date.date()), "%Y-%m-%d").strftime("%Y-%m-%dT%H:%M:%S")
-                appointment_sub_arr['start'] = start_date
-                appointment_sub_arr['end'] = end_date
-                appointment_arr.append(appointment_sub_arr)
-                print("la salida de consola dce:",start_date)
-                print(end_date)
-                print(i.start_date)
+        if request.GET:
+            print("antes de if= True")
+            appointment_arr = []
+            if request.GET.get('appointment_type') == "all":
+                    print("appointment all= True")
+                    all_appointments = Appointments.objects.all()
+            else:
+                    all_appointments = Appointments.objects.filter(appointment_type__icontains=request.GET.get('appointment_type'))
 
-                return HttpResponse(json.dumps(appointment_arr))
-        """
+            for i in all_appointments:
+                    appointment_sub_arr = {}
+                    appointment_sub_arr['title'] = i.appointment_name
+                    start_date = datetime.strptime(str(i.start_date.date()), "%Y-%m-%dT%H:%M:%S").strftime("%Y-%m-%dT%H:%M:%S")
+                    end_date = datetime.strptime(str(i.end_date.date()), "%Y-%m-%dT%H:%M:%S").strftime("%Y-%m-%dT%H:%M:%S")
+                    print("la salida de consola dce:",start_date)
+                    print(end_time)
+                    print(i.start_date)
+                    appointment_sub_arr['start'] = start_date
+                    appointment_sub_arr['end'] = end_date
+                    appointment_arr.append(appointment_sub_arr)
+                    return HttpResponse(json.dumps(appointment_arr))
         
-        
-        for x in all_appointments:
-            print(x)
 
         context = {
                 "appointments": all_appointments,

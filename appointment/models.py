@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from datetime import datetime
 
 from django.db import models
 
@@ -9,7 +10,11 @@ class Appointments(models.Model):
     appointment_name = models.CharField(max_length=255, null=True, blank=True)
     start_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
+    pick_up_date = models.DateField(default=datetime.now, null=True)
+    pick_up_time = models.TimeField(null=True )
+    appointment_time = models.TimeField( null=True)
     appointment_type = models.CharField(max_length=10, null=True, blank=True)
+    miles = models.CharField(max_length=10)
     invoice = models.CharField(max_length=10, null=True, blank=True)
     passenger = models.CharField(max_length=10, null=True, blank=True)
 

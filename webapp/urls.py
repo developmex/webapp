@@ -24,7 +24,7 @@ from events.views import event
 from appointment.views import AppointmentListView, AppointmentDetailView
 from appointment.views import appointment
 from invoice.views import InvoiceCreateView, invoice_create
-from appointment.views import AppointmentCreateView, AppointmentUpdate, appointment_form
+from appointment.views import AppointmentCreateView, AppointmentUpdate, AppointmentView, appointment
 admin.site.site_header = 'Valley Administrator'
 admin.site.site_title = 'Valley Medical Transport'
 
@@ -51,11 +51,11 @@ urlpatterns = [
     url(r'^calendar/', appointment, name='calendar'),
 
     url(r'^appointments/list/', AppointmentListView.as_view(), name='appointments_listview'),
-    url(r'^appointments/detail/(?P<pk>[0-9]+)/$', AppointmentDetailView.as_view(), name='appointment-detail'),
-    url(r'^appointments/add/', AppointmentCreateView.as_view(), name='appointment_add'),
-    url(r'^appointment_form/add/', appointment_form, name='appointment_add'),
+    url(r'^appointments/view/(?P<pk>[0-9]+)/$', AppointmentDetailView.as_view(), name='appointment-detail'),
+    url(r'^appointments/add/', appointment, name='appointment_add'),
+    url(r'^appointment_form/add/', AppointmentView.as_view(), name='appointment_add'),
 
-    url(r'^appointments/edit/(?P<pk>[0-9]+)/$', AppointmentUpdate.as_view(), name='appointment-edit'),
+    url(r'appointments/edit/(?P<pk>[0-9]+)/$', AppointmentUpdate.as_view(), name='appointment-edit'),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

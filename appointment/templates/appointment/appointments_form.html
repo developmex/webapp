@@ -1,21 +1,92 @@
-{%extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% block content %}{% load crispy_forms_tags %}
+ 
+        <link href='{% static 'fullcalendar/packages/core/main.css' %}' rel='stylesheet'/>
+        <link href='{% static 'fullcalendar/packages/daygrid/main.css' %}' rel='stylesheet'/>
+        <link href='{% static 'fullcalendar/packages/timegrid/main.css' %}' rel='stylesheet'/>
+        <link href='{% static 'fullcalendar/packages/list/main.css' %}' rel='stylesheet'/>
+        <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+        <script>
 
+            document.addEventListener('DOMContentLoaded', function () {
+                let calendarEl = document.getElementById('calendar');
+                console.log("try");
 
-<div class="container">
-    <div class="row">
-       <div class="col-lg-8">
-           <div style="text-align: center;"><h1>Create new Appointments</h1></div>
-           <form method="post">{% csrf_token %}
-                {{ form|crispy }}
-                <input type="submit" value="Save">
-        </form>
+                let calendar = new FullCalendar.Calendar(calendarEl, {
+                    height: 'auto',
+                    locale: 'en-gb',
+                    plugins: ['dayGrid', 'timeGrid', 'list', 'interaction'],
+                    defaultView: 'timeGridWeek',
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                    },
+                    defaultDate: Date.now(),
+                    navLinks: true, // can click day/week names to navigate views
+                    editable: false,
+                    eventLimit: true,
+                    themeSystem: 'bootstrap', // allow "more" link when too many events
+                    events: [
+          {% for i in appointments %}
+             {
+                  title: "{{ i.appointment_name}}",
+                  
+                  start: '{{ i.start_date|date:"Y-m-d" }}T{{ i.start_date|time:"H:i"}}',
+                  end: '{{ i.end_date|date:"Y-m-d" }}T{{ i.end_date|time:"H:i" }}',
+              },
+          {% endfor %}
+        ]
+                });
 
+                calendar.render();
+            });
+
+        </script>
+        <style>
+
+          
+
+            #calendar {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+        </style>
+    
+    
+
+        <div class="container" style="padding: 10px;">
+            <div class="row">
+               <div class="col-lg-6">
+
+                   <div style="text-align: center;"><h1>Create new Appointments</h1></div>
+                   <form method="post">{% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="submit" value="Save">
+                </form>
+        
+                </div>
+                <div class="col-lg-6">
+                    <div id='calendar'></div>
+                </div>
+                
+            </div>
+            <div class="row">
+                
+            </div>
+        
         </div>
-    </div>
+    
 
-</div>
-
-
+    <script src='{% static 'fullcalendar/packages/core/main.js' %}'></script>
+    <script src='{% static 'fullcalendar/packages/interaction/main.js' %}'></script>
+    <script src='{% static 'fullcalendar/packages/daygrid/main.js' %}'></script>
+    <script src='{% static 'fullcalendar/packages/timegrid/main.js' %}'></script>
+    <script src="{% static 'fullcalendar/packages/core/locales/sr.js' %}"></script>
+    
 {% endblock %}
